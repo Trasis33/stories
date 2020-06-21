@@ -1,1 +1,1 @@
-*add environment variables here...*
+*create config.env here...*

@@ -1,5 +1,8 @@
 const express = require('express')
-const dotenv = require('dotenv').config({ path: './config/config.env' })
+const dotenv = require('dotenv').config({ path: './config/config.env' }) // eslint-disable-line no-unused-vars
+const connectDB = require('./config/db')
+
+connectDB()
 
 const app = express()
 
