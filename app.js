@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv').config({ path: './config/config.env' }) // eslint-disable-line no-unused-vars
 const morgan = require('morgan')
 const hbs = require('express-handlebars')
+const path = require('path')
 const connectDB = require('./config/db')
 
 connectDB()
@@ -16,6 +17,9 @@ if (process.env.NODE_ENV === 'development') {
 // template engine
 app.engine('.hbs', hbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', '.hbs')
+
+// static folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
 app.use('/', require('./routes/index'))
