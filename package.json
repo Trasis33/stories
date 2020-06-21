@@ -33,5 +33,22 @@
   "devDependencies": {
     "cross-env": "^7.0.2",
     "nodemon": "^2.0.4"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.hbs",
+        "options": {
+          "trailingComma": "es5",
+          "tabWidth": 4,
+          "semi": false,
+          "singleQuote": false
+        }
+      }
+    ]
   }
 }
