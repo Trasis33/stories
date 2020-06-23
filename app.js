@@ -1,9 +1,15 @@
+const path = require('path')
+
 const express = require('express')
 const dotenv = require('dotenv').config({ path: './config/config.env' }) // eslint-disable-line no-unused-vars
 const morgan = require('morgan')
 const hbs = require('express-handlebars')
-const path = require('path')
+const passport = require('passport')
+const session = require('express-session')
 const connectDB = require('./config/db')
+
+// passport
+require('./config/passport')(passport)
 
 connectDB()
 
@@ -17,6 +23,19 @@ if (process.env.NODE_ENV === 'development') {
 // template engine
 app.engine('.hbs', hbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', '.hbs')
+
+// session
+app.use(
+  session({
+    secret: 'cat keyboard',
+    resave: false,
+    saveUninitialized: false
+  })
+)
+
+// passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // static folder
 app.use(express.static(path.join(__dirname, 'public')))

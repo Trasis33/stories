@@ -3,7 +3,7 @@ p {
 }
 
 .login-container {
-  width: 400px !important;
+  width: 400px;
   margin-top: 40px;
   text-align: center;
 }
