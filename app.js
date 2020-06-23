@@ -1,11 +1,13 @@
 const path = require('path')
 
 const express = require('express')
+const mongoose = require('mongoose')
 const dotenv = require('dotenv').config({ path: './config/config.env' }) // eslint-disable-line no-unused-vars
 const morgan = require('morgan')
 const hbs = require('express-handlebars')
 const passport = require('passport')
 const session = require('express-session')
+const SessionStore = require('connect-mongo')(session)
 const connectDB = require('./config/db')
 
 // passport
@@ -29,7 +31,8 @@ app.use(
   session({
     secret: 'cat keyboard',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new SessionStore({ mongooseConnection: mongoose.connection })
   })
 )
 
