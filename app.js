@@ -24,8 +24,13 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
+const { formatDate } = require('./helpers/hbs')
+
 // template engine
-app.engine('.hbs', hbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine(
+  '.hbs',
+  hbs({ helpers: { formatDate }, defaultLayout: 'main', extname: '.hbs' })
+)
 app.set('view engine', '.hbs')
 
 // session
@@ -52,4 +57,7 @@ app.use('/stories', require('./routes/stories'))
 
 const PORT = process.env.PORT || 3000
 
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(
+  PORT,
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+)
