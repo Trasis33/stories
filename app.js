@@ -17,6 +17,8 @@ connectDB()
 
 const app = express()
 
+app.use(express.urlencoded({ extended: false }))
+
 // logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
