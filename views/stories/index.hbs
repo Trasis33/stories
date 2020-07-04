@@ -4,7 +4,9 @@
     <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
-          {{!-- ToDo: EditIcon --}}
+          {{!-- first user = user from the stories each loop,
+          second user is logged in user outside loop --}}
+          {{{editIcon user ../user _id}}}
           <div class="card-content center-align">
             <h5>{{title}}</h5>
             <p>{{stripTags (truncate body 100)}}</p>
