@@ -24,12 +24,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
-const { formatDate } = require('./helpers/hbs')
+const { formatDate, truncate, stripTags } = require('./helpers/hbs')
 
 // template engine
 app.engine(
   '.hbs',
-  hbs({ helpers: { formatDate }, defaultLayout: 'main', extname: '.hbs' })
+  hbs({ helpers: { formatDate, truncate, stripTags }, defaultLayout: 'main', extname: '.hbs' })
 )
 app.set('view engine', '.hbs')
 
