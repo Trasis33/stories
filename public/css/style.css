@@ -16,3 +16,8 @@ p {
 .img-small {
   width: 180px;
 }
+
+.card .card-image img {
+  width: auto;
+  border-radius: 20px;
+}
